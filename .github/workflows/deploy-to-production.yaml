@@ -3,6 +3,9 @@ on:
   push:
     tags:
     - '*'
+    branches:
+    - master
+    - main
 jobs:
   container-job:
     runs-on: ubuntu-latest
