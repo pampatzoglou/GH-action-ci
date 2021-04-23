@@ -3,8 +3,6 @@ on:
   push:
     tags:
     - '*'
-    branches-ignore:
-    - "!main"
 jobs:
   container-job:
     runs-on: ubuntu-latest
