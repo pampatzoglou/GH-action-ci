@@ -7,4 +7,4 @@ on:
     branches:
     - main
   steps:
-    - uses: echo "main push"
+    - run: echo "main push"
