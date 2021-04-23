@@ -7,4 +7,4 @@ jobs:
   container-job:
     runs-on: ubuntu-latest
     steps:
-    - run: echo "DEPLOY TO ENV"
+    - run: echo "DEPLOY TO ENV ${GITHUB_REF##*/}"

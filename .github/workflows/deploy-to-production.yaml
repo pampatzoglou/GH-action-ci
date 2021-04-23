@@ -6,6 +6,7 @@ on:
 jobs:
   container-job:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
     steps:
     - run: echo "DEPLOY TO PRODUCTION"
 
