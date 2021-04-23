@@ -4,7 +4,7 @@ on:
     tags:
     - '*'
     branches-ignore:
-    - !master
+    - "!main"
 jobs:
   container-job:
     runs-on: ubuntu-latest
