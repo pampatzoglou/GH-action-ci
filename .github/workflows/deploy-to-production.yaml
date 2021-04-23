@@ -1,14 +1,12 @@
-name: TEST
+name: DEPLOY TO PRODUCTION
 on:
   push:
     branches:
     - main
-  pull_request:
-    branches:
-    - main
+    tags:
+       - '*'
 jobs:
   container-job:
     runs-on: ubuntu-latest
-
     steps:
-    - run: echo "DEPLOY TO STAGING"
+    - run: echo "DEPLOY TO PRODUCTION"
