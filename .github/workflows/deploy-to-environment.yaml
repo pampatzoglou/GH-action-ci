@@ -6,8 +6,18 @@ on:
     - master
 
 jobs:
+  linting:
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo "Linting"
+  testing:
+    runs-on: ubuntu-latest
+    needs: linting
+    steps:
+    - run: echo "Integration testing"
   deploy-multistage:
     runs-on: ubuntu-latest
+    needs: [linting, testing]
     steps:
     - run: echo "Deploy to ${GITHUB_REF##*/}"
 

@@ -5,6 +5,15 @@ on:
     - main
     - master
 jobs:
+  linting:
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo "Linting"
+  testing:
+    runs-on: ubuntu-latest
+    needs: linting
+    steps:
+    - run: echo "Integration testing"
   deploy-staging:
     runs-on: ubuntu-latest
     steps:
