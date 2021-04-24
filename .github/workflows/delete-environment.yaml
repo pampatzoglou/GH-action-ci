@@ -9,4 +9,4 @@ jobs:
   delete-multistage:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Delete from ${GITHUB_REF##*/}"
+    - run: echo "Delete from ${GITHUB_REF##*/}"
