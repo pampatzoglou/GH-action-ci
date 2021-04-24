@@ -1,0 +1,12 @@
+name: DELETE ENV
+on: 
+  delete:
+    branches-ignore:
+    - main
+    - master
+
+jobs:
+  deploy-multistage:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Delete from ${GITHUB_REF##*/}"
