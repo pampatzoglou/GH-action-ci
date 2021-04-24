@@ -27,4 +27,3 @@ jobs:
     needs: [deploy-kind]
     steps:
     - run: echo "RELEASE"
-
