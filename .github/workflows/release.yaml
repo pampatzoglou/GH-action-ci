@@ -1,0 +1,12 @@
+name: RELEASE
+on:
+  release:
+    types: [published]
+
+jobs:
+  container-job:
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo "RELEASE"
+
+
