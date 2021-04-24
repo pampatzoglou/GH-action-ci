@@ -1,7 +1,7 @@
 name: RELEASE
 on:
   release:
-    types: [published]
+    types: [released]
 
 jobs:
   container-job:
