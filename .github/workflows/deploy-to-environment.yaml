@@ -4,10 +4,6 @@ on:
     branches-ignore:
     - main
     - master
-  pull_request:
-    branches-ignore:
-    - main
-    - master
 
 jobs:
   which_branch:
@@ -17,14 +13,5 @@ jobs:
       - name: Extract branch name
         if: github.event_name != 'pull_request'
         shell: bash
-        run: echo "::set-env name=BRANCH_NAME::$(echo ${GITHUB_REF#refs/heads/})"
-        id: extract_branch
+        run: echo "Environment is ${GITHUB_REF#refs/heads/})"
 
-      # extract branch name on pull request
-      - name: Print branch name
-        if: github.event_name == 'pull_request'
-        run: echo "::set-env name=BRANCH_NAME::$(echo ${GITHUB_HEAD_REF})"
-
-      # print branch name
-      - name: Get branch name
-        run: echo 'The branch name is' $BRANCH_NAME
