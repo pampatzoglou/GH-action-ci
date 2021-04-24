@@ -9,9 +9,5 @@ jobs:
   deploy-multistage:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Extract branch name
-        shell: bash
-        run: |
-          echo ${GITHUB_REF##*/}
+      - run: echo "Delete from ${GITHUB_REF##*/}"
 
