@@ -16,5 +16,6 @@ jobs:
     - run: echo "Integration testing"
   deploy-staging:
     runs-on: ubuntu-latest
+    needs: [linting, testing]
     steps:
     - run: echo "DEPLOY TO STAGING"
