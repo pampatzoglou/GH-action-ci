@@ -1,6 +1,6 @@
-name: DEPLOY TO ENV
+name: DELETE ENV
 on: 
-  push:
+  delete:
     branches-ignore:
     - main
     - master
@@ -9,5 +9,4 @@ jobs:
   deploy-multistage:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Deploy to ${GITHUB_REF##*/}"
-
+      - run: echo "Delete from ${GITHUB_REF##*/}"
