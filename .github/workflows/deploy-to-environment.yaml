@@ -9,11 +9,12 @@ jobs:
   deploy-multistage:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: Extract branch name
         shell: bash
         run: |
           BRANCH=$( git rev-parse --abbrev-ref HEAD )
           echo $BRANCH
           echo "Current branch is: ${BRANCH}"
+          env
 
