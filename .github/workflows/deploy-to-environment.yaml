@@ -14,5 +14,6 @@ jobs:
         shell: bash
         run: |
           BRANCH=$( git rev-parse --abbrev-ref HEAD )
-          echo "Current branch is: $BRANCH"
+          echo $BRANCH
+          echo "Current branch is: ${BRANCH}"
 
