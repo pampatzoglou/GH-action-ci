@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: kind
     steps:
-    - run: echo "initegration testing"
+    - run: echo "initegration testing on KinD"
   release-job:
     runs-on: ubuntu-latest
     needs: [deploy-kind]

@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: kind
     steps:
-    - run: echo "initegration testing"
+    - run: echo "initegration testing on KinD"
   deploy:
     runs-on: ubuntu-latest
     needs: [initegration-testing]
