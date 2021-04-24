@@ -6,12 +6,13 @@ on:
     - master
 
 jobs:
-  which_branch:
+  deploy-multistage:
     runs-on: ubuntu-latest
     steps:
       # extract branch name
       - name: Extract branch name
-        if: github.event_name != 'pull_request'
         shell: bash
-        run: echo ${GITHUB_REF#refs/heads/})
+        run: |
+          BRANCH=$( git rev-parse --abbrev-ref HEAD )
+          echo "Current branch is: $BRANCH"
 

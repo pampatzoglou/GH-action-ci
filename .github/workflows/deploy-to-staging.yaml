@@ -5,7 +5,7 @@ on:
     - main
     - master
 jobs:
-  container-job:
+  deploy-staging:
     runs-on: ubuntu-latest
     steps:
     - run: echo "DEPLOY TO STAGING"
