@@ -6,7 +6,7 @@ on:
     - master
 
 jobs:
-  deploy-multistage:
+  delete-multistage:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Delete from ${GITHUB_REF##*/}"
+    - run: echo "Delete from ${GITHUB_REF##*/}"
