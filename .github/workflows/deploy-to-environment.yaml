@@ -16,5 +16,5 @@ jobs:
           BRANCH=$( git rev-parse --abbrev-ref HEAD )
           echo $BRANCH
           echo "Current branch is: ${BRANCH}"
-          env
+          echo $GITHUB_REF##*/
 
