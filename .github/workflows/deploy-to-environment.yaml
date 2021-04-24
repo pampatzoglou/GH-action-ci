@@ -3,6 +3,7 @@ on:
   push:
     branches-ignore:
     - main
+    - master
 jobs:
   container-job:
     runs-on: ubuntu-latest
