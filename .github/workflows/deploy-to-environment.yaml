@@ -9,5 +9,5 @@ jobs:
   deploy-multistage:
     runs-on: ubuntu-latest
     steps:
-    - run: echo "Deploy from ${GITHUB_REF##*/}"
+    - run: echo "Deploy to ${GITHUB_REF##*/}"
 
