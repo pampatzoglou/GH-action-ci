@@ -1,4 +1,4 @@
-name: DEPLOY TO PRODUCTION
+name: TAG ACTIONS
 on:
   push:
     tags:
@@ -7,5 +7,5 @@ jobs:
   container-job:
     runs-on: ubuntu-latest
     steps:
-    - run: echo "DEPLOY TO PRODUCTION"
+    - run: echo "TAG ACTIONS"
 
