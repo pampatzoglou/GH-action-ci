@@ -8,20 +8,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: echo "Linting"
-  testing:
+  init-testing:
     runs-on: ubuntu-latest
-    needs: linting
     steps:
-    - run: echo "Integration testing"
-  deploy-kind:
+    - run: echo "init testing"
+  kind:
     runs-on: ubuntu-latest
-    needs: [linting, testing]
+    needs: [linting, init-testing]
     steps:
     - run: echo "Deploy to KinD"
+  initegration-testing:
+    runs-on: ubuntu-latest
+    needs: kind
+    steps:
+    - run: echo "initegration testing"
   release-job:
     runs-on: ubuntu-latest
     needs: [deploy-kind]
     steps:
     - run: echo "RELEASE"
-
 
