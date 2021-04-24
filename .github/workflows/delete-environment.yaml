@@ -7,6 +7,9 @@ on:
 
 jobs:
   delete-multistage:
+    if: github.event.ref_type == 'branch'
     runs-on: ubuntu-latest
     steps:
-    - run: echo "Delete from ${GITHUB_REF##*/}"
+      - name: Clean up
+        run: |
+          echo "Clean up for branch ${{ github.event.ref }}"
