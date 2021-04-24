@@ -9,7 +9,7 @@ jobs:
   deploy-multistage:
     runs-on: ubuntu-latest
     steps:
-      # extract branch name
+      - uses: actions/checkout@v1
       - name: Extract branch name
         shell: bash
         run: |
