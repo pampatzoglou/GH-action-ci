@@ -38,6 +38,32 @@ EOF
 }
 
 main() {
+    args=()
+
+    if [[ -n "${INPUT_VERSION:-}" ]]; then
+        args+=(--version "${INPUT_VERSION}")
+    fi
+
+    if [[ -n "${INPUT_CONFIG:-}" ]]; then
+        args+=(--config "${INPUT_CONFIG}")
+    fi
+
+    if [[ -n "${INPUT_NODE_IMAGE:-}" ]]; then
+        args+=(--node-image "${INPUT_NODE_IMAGE}")
+    fi
+
+    if [[ -n "${INPUT_CLUSTER_NAME:-}" ]]; then
+        args+=(--cluster-name "${INPUT_CLUSTER_NAME}")
+    fi
+
+    if [[ -n "${INPUT_WAIT:-}" ]]; then
+        args+=(--wait "${INPUT_WAIT}")
+    fi
+
+    if [[ -n "${INPUT_LOG_LEVEL:-}" ]]; then
+        args+=(--log-level "${INPUT_LOG_LEVEL}")
+    fi
+    
     local version="$DEFAULT_KIND_VERSION"
     local config=
     local node_image=
