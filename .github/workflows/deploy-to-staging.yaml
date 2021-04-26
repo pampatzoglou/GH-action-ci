@@ -16,8 +16,7 @@ jobs:
     steps:
     - run: echo "Linting"
     - run: /scripts/main.sh
-    - run: kubectl cluster-info dump
-    - run: kubectl cluster-info --context kind-kind
+    - run: kubectl cluster-info --context kind-chart-testing
   init-testing:
     runs-on: ubuntu-latest
     steps:
