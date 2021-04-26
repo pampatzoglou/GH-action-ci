@@ -9,18 +9,15 @@ jobs:
   linting:
     runs-on: ubuntu-latest
     container:
-      image: web3f/ci-commons:v2.4.4
+      image: uslnmaincr.azurecr.io/ci-common:0.0.2
+      credentials:
+        username: UslnMainCR
+        password: ${{ secrets.DOCKER_PASSWORD }}
     steps:
     - run: echo "Linting"
     - run: kind create cluster
     - run: kubectl cluster-info dump
     - run: kubectl cluster-info --context kind-kind
-    - name: Setup tmate debug session
-      if: ${{ failure() }}
-      uses: mxschmitt/action-tmate@v3
-      with:
-        limit-access-to-actor: true
-        sudo: false
   init-testing:
     runs-on: ubuntu-latest
     steps:
