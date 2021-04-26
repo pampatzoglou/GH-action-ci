@@ -13,6 +13,7 @@ jobs:
     - uses: actions/checkout@v2
     - run: scripts/main.sh
     - run: kubectl cluster-info --context kind-chart-testing
+    - run: kubectl get pods -A
   init-testing:
     runs-on: ubuntu-latest
     steps:
