@@ -8,11 +8,11 @@ on:
 jobs:
   linting:
     runs-on: ubuntu-latest
-    #container:
-    #  image: uslnmaincr.azurecr.io/ci-common:0.0.2
-    #  credentials:
-    #    username: UslnMainCR
-    #    password: ${{ secrets.DOCKER_PASSWORD }}
+    container:
+      image: uslnmaincr.azurecr.io/ci-common:0.0.2
+      credentials:
+        username: UslnMainCR
+        password: ${{ secrets.DOCKER_PASSWORD }}
     steps:
     - run: echo "Linting"
     - uses: actions/checkout@v2
