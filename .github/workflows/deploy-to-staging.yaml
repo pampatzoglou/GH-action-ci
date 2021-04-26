@@ -9,13 +9,13 @@ jobs:
   linting:
     runs-on: ubuntu-latest
     container:
-      image: uslnmaincr.azurecr.io/ci-common:0.0.2
+      image: uslnmaincr.azurecr.io/ci-common:0.0.3
       credentials:
         username: UslnMainCR
         password: ${{ secrets.DOCKER_PASSWORD }}
     steps:
     - run: echo "Linting"
-    - run: snap install microk8s --classic --channel=1.18/stable
+    - run: kind create cluster
     - run: netstat -tunlp
     - run: kubectl cluster-info dump
     - run: kubectl cluster-info --context kind-kind
