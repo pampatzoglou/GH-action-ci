@@ -54,26 +54,15 @@ main() {
 
     local arch
     arch=$(uname -m)
-    local cache_dir="$RUNNER_TOOL_CACHE/kind/$version/$arch"
-
-    local kind_dir="$cache_dir/kind/bin/"
-    if [[ ! -x "$kind_dir/kind" ]]; then
-        install_kind
-    fi
 
     echo 'Adding kind directory to PATH...'
-    echo "$kind_dir" >> "$GITHUB_PATH"
-
-    local kubectl_dir="$cache_dir/kubectl/bin/"
-    if [[ ! -x "$kubectl_dir/kubectl" ]]; then
-        install_kubectl
-    fi
+    echo "/usr/local/bin/kind" >> "$GITHUB_PATH"
 
     echo 'Adding kubectl directory to PATH...'
-    echo "$kubectl_dir" >> "$GITHUB_PATH"
+    echo "/usr/local/bin/kubectl" >> "$GITHUB_PATH"
 
-    "$kind_dir/kind" version
-    "$kubectl_dir/kubectl" version --client=true
+    kind version
+    kubectl version --client=true
 
     create_kind_cluster
 }
@@ -154,24 +143,6 @@ parse_command_line() {
     done
 }
 
-install_kind() {
-    echo 'Installing kind...'
-
-    mkdir -p "$kind_dir"
-
-    curl -sSLo "$kind_dir/kind" "https://github.com/kubernetes-sigs/kind/releases/download/$version/kind-linux-amd64"
-    chmod +x "$kind_dir/kind"
-}
-
-install_kubectl() {
-    echo 'Installing kubectl...'
-
-    mkdir -p "$kubectl_dir"
-
-    curl -sSLo "$kubectl_dir/kubectl" "https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl"
-    chmod +x "$kubectl_dir/kubectl"
-}
-
 create_kind_cluster() {
     echo 'Creating kind cluster...'
     local args=(create cluster "--name=$cluster_name" "--wait=$wait")
@@ -188,7 +159,7 @@ create_kind_cluster() {
         args+=("--loglevel=$log_level")
     fi
 
-    "$kind_dir/kind" "${args[@]}"
+    /usr/local/bin/kind "${args[@]}"
 }
 
 main "$@"
