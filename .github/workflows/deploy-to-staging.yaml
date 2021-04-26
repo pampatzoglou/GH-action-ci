@@ -8,8 +8,11 @@ on:
 jobs:
   linting:
     runs-on: ubuntu-latest
+    container:
+      image: web3f/ci-commons
     steps:
     - run: echo "Linting"
+    - run: kind create cluster
   init-testing:
     runs-on: ubuntu-latest
     steps:
