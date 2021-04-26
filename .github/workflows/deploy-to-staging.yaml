@@ -8,16 +8,10 @@ on:
 jobs:
   linting:
     runs-on: ubuntu-latest
-    container:
-      image: ubuntu:focal
-      #credentials:
-      #  username: UslnMainCR
-      #  password: ${{ secrets.DOCKER_PASSWORD }}
     steps:
     - run: echo "Linting"
     - uses: actions/checkout@v2
-    - run: scripts/kind.sh
-    - run: kubectl cluster-info --context kind-chart-testing
+    - run: kind create cluster
     - run: kubectl get pods -A
   init-testing:
     runs-on: ubuntu-latest

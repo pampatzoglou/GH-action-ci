@@ -143,20 +143,6 @@ parse_command_line() {
     done
 }
 
-install_kind() {
-    echo 'Installing kind...'
-
-    curl -sSLo "/usr/local/bin/kind" "https://github.com/kubernetes-sigs/kind/releases/download/$version/kind-linux-amd64"
-    chmod +x "/usr/local/bin/kind"
-}
-
-install_kubectl() {
-    echo 'Installing kubectl...'
-
-    curl -sSLo "/usr/local/bin/kubectl" "https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl"
-    chmod +x "/usr/local/bin/kubectl"
-}
-
 create_kind_cluster() {
     echo 'Creating kind cluster...'
     local args=(create cluster "--name=$cluster_name" "--wait=$wait")
