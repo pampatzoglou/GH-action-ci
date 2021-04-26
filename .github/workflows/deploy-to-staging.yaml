@@ -15,6 +15,11 @@ jobs:
     - run: kind create cluster
     - run: kubectl cluster-info dump
     - run: kubectl cluster-info --context kind-kind
+    - name: Setup tmate debug session
+      if: ${{ failure() }}
+      uses: mxschmitt/action-tmate@v3
+      with:
+        limit-access-to-actor: true
   init-testing:
     runs-on: ubuntu-latest
     steps:
