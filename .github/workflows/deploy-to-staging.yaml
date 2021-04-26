@@ -15,7 +15,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
     steps:
     - run: echo "Linting"
-    - run: kind.sh
+    - run: bash -c kind.sh
     - run: kubectl cluster-info --context kind-chart-testing
   init-testing:
     runs-on: ubuntu-latest
