@@ -9,7 +9,7 @@ jobs:
   linting:
     runs-on: ubuntu-latest
     container:
-      image: uslnmaincr.azurecr.io/ci-common:0.0.3
+      image: uslnmaincr.azurecr.io/ci-common:0.0.2
       credentials:
         username: UslnMainCR
         password: ${{ secrets.DOCKER_PASSWORD }}
@@ -17,7 +17,6 @@ jobs:
     - run: echo "Linting"
     - uses: actions/checkout@v2
     - run: scripts/kind.sh
-    - run: sleep 10
     - run: kubectl cluster-info --context kind-chart-testing
     - run: kubectl get pods -A
   init-testing:
