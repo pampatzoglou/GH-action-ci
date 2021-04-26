@@ -13,6 +13,7 @@ jobs:
     steps:
     - run: echo "Linting"
     - run: kind create cluster
+    - run: kubectl cluster-info dump
     - run: kubectl cluster-info --context kind-kind
   init-testing:
     runs-on: ubuntu-latest
