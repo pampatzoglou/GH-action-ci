@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
 
-BASH=$(which bash)
-if [ `readlink /proc/$$/exe` != $BASH ];then
-  $BASH "$0" "$@"
-  exit $?
-fi
-
 set -o errexit
 set -o nounset
 set -o pipefail
