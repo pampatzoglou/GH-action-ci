@@ -1,5 +1,19 @@
 #!/usr/bin/env bash
 
+# Copyright The Helm Authors
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 set -o errexit
 set -o nounset
 set -o pipefail
@@ -24,32 +38,6 @@ EOF
 }
 
 main() {
-    args=()
-
-    if [[ -n "${INPUT_VERSION:-}" ]]; then
-        args+=(--version "${INPUT_VERSION}")
-    fi
-
-    if [[ -n "${INPUT_CONFIG:-}" ]]; then
-        args+=(--config "${INPUT_CONFIG}")
-    fi
-
-    if [[ -n "${INPUT_NODE_IMAGE:-}" ]]; then
-        args+=(--node-image "${INPUT_NODE_IMAGE}")
-    fi
-
-    if [[ -n "${INPUT_CLUSTER_NAME:-}" ]]; then
-        args+=(--cluster-name "${INPUT_CLUSTER_NAME}")
-    fi
-
-    if [[ -n "${INPUT_WAIT:-}" ]]; then
-        args+=(--wait "${INPUT_WAIT}")
-    fi
-
-    if [[ -n "${INPUT_LOG_LEVEL:-}" ]]; then
-        args+=(--log-level "${INPUT_LOG_LEVEL}")
-    fi
-
     local version="$DEFAULT_KIND_VERSION"
     local config=
     local node_image=
@@ -155,6 +143,20 @@ parse_command_line() {
     done
 }
 
+install_kind() {
+    echo 'Installing kind...'
+
+    curl -sSLo "/usr/local/bin/kind" "https://github.com/kubernetes-sigs/kind/releases/download/$version/kind-linux-amd64"
+    chmod +x "/usr/local/bin/kind"
+}
+
+install_kubectl() {
+    echo 'Installing kubectl...'
+
+    curl -sSLo "/usr/local/bin/kubectl" "https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl"
+    chmod +x "/usr/local/bin/kubectl"
+}
+
 create_kind_cluster() {
     echo 'Creating kind cluster...'
     local args=(create cluster "--name=$cluster_name" "--wait=$wait")
@@ -171,7 +173,7 @@ create_kind_cluster() {
         args+=("--loglevel=$log_level")
     fi
 
-    /usr/local/bin/kind "${args[@]}"
+    "/usr/local/bin/kind" "${args[@]}"
 }
 
 main "$@"
