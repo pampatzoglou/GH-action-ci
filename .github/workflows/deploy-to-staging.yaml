@@ -17,7 +17,7 @@ jobs:
     - run: echo "Linting"
     - uses: actions/checkout@v2
     - run: scripts/kind.sh
-    - run: sleep 5000
+    - run: sleep 10
     - run: kubectl cluster-info --context kind-chart-testing
     - run: kubectl get pods -A
   init-testing:
