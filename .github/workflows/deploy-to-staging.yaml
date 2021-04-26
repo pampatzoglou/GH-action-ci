@@ -16,6 +16,7 @@ jobs:
     steps:
     - run: echo "Linting"
     - run: kind create cluster
+    - run: cat /root/.kube
     - run: kubectl cluster-info dump
     - run: kubectl cluster-info --context kind-kind
   init-testing:
