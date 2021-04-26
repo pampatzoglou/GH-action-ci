@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: echo "Linting"
-    - run: ./scripts/main.sh
+    - run: scripts/main.sh
     - run: kubectl cluster-info --context kind-chart-testing
   init-testing:
     runs-on: ubuntu-latest
