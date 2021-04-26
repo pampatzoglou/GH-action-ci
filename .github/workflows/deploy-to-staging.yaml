@@ -15,9 +15,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
     steps:
     - run: echo "Linting"
-    - run: kind create cluster
-    - run: env
-    - run: apt install -y net-tools
+    - run: snap install microk8s --classic --channel=1.18/stable
     - run: netstat -tunlp
     - run: kubectl cluster-info dump
     - run: kubectl cluster-info --context kind-kind
