@@ -9,7 +9,7 @@ jobs:
   linting:
     runs-on: ubuntu-latest
     container:
-      image: web3f/ci-commons
+      image: web3f/ci-commons:v2.4.4
     steps:
     - run: echo "Linting"
     - run: kind create cluster
